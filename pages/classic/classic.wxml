@@ -1,0 +1,16 @@
+<view class='classic-container'>
+  <view class='header'>
+      <v-epsoide class='epsoide' index="{{index}}"/>
+  </view>
+
+  <scroll-view scroll-y="true"  style="height: 800rpx;" >
+    <view class='content' wx:for="{{info}}">
+      <text class='text'>{{item.startTime}}--{{item.endTime}} {{item.content}} </text>
+    </view>
+  </scroll-view>
+
+  <view bind:tap="add" class='img-container'>
+    <image class='img' src="images/add.png"></image>
+  </view>
+
+</view>

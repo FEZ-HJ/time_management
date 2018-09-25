@@ -1,0 +1,84 @@
+
+<view>
+
+  <view class='classic-container'>
+
+    <view class=" weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">开始</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="time" value="{{startTime}}" bindchange="bindstartTimeChange">
+            <view class="weui-input">{{startTime}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+    <view class=" weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">结束</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="time" value="{{endTime}}" bindchange="bindendTimeChange">
+            <view class="weui-input">{{endTime}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <scroll-view scroll-y="true"  style="height: 850rpx;">
+
+    <view class='text-area'>
+      <view class="page-section-title">活动内容</view>
+      <view class="page-section" >
+        <view class="textarea-wrp">
+          <textarea bindinput="text_input" style='background-color:#F8F8F8;margin-top:10rpx;min-height:100rpx' auto-height />
+        </view>
+      </view>
+    </view>
+
+    <view class="show-title">
+      <radio-group name="radio" bindchange="radioChange">
+        <view class="title classic-container">
+          <radio value="radio0"/>
+          <view class='classic-img' style='background-color:red;'/> 
+          : 娱乐时间 
+        </view>
+        <view class="title classic-container">
+          <radio value="radio1"/>
+          <view class='classic-img' style='background-color:skyblue;'/> 
+          : 对自己有成长的时间 
+        </view>
+        <view class="title classic-container">
+          <radio value="radio2"/>
+          <view class='classic-img' style='background-color:lime;'/> 
+          : 吃饭、睡觉的时间 
+        </view>
+        <view class="title classic-container">
+          <radio value="radio3"/>
+          <view class='classic-img' style='background-color:greenyellow;'/> 
+          : 强制性工作时间 
+        </view>
+        <view class="title classic-container">
+          <radio value="radio4"/>
+          <view class='classic-img' style='background-color:goldenrod;'/> 
+          : 浪费的时间 
+        </view>
+      </radio-group>
+    </view>
+  </scroll-view>
+
+  <view bind:tap="submit" class='img-container'>
+    <view class='img-center'>
+      <image class='img' src="images/submit.png"></image>
+    </view>
+  </view>
+
+</view>
+
+  

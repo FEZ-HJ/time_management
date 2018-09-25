@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "v-epsoide": "/components/epsoide/epsoide"
+  }
+}

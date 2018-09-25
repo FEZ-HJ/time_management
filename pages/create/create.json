@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "v-create": "/components/create/create"
+  }
+}
