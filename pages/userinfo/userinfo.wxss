@@ -1,1 +1,8 @@
-/* pages/userinfo/userinfo.wxss */
+.address-add {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.address-list {
+    margin-bottom: 46px;
+}

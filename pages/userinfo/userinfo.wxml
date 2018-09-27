@@ -1,2 +1,6 @@
-<!--pages/userinfo/userinfo.wxml-->
-<text>pages/userinfo/userinfo.wxml</text>
+<view class="address-list">
+  <view class='content' wx:for="{{info}}">
+      <text class='text'>{{item.startTime}}--{{item.endTime}} {{item.content}} </text>
+    </view>
+</view>
+<!-- <button bindtap="add" type="primary" class="address-add">添加</button> -->

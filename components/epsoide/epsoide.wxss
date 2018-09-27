@@ -49,7 +49,7 @@
 .year{
   font-size:10px;
   line-height:10px; 
-  padding-bottom:3px;   
+  padding-bottom:4px;   
 }
 
 .day{
