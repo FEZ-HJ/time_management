@@ -47,27 +47,27 @@
         <view class="title classic-container">
           <radio value="radio0"/>
           <view class='classic-img' style='background-color:red;'/> 
-          : 娱乐时间 
+          : 娱乐 
         </view>
         <view class="title classic-container">
           <radio value="radio1"/>
           <view class='classic-img' style='background-color:skyblue;'/> 
-          : 对自己有成长的时间 
+          : 成长 
         </view>
         <view class="title classic-container">
           <radio value="radio2"/>
           <view class='classic-img' style='background-color:lime;'/> 
-          : 吃饭、睡觉的时间 
+          : 吃饭、睡觉 
         </view>
         <view class="title classic-container">
           <radio value="radio3"/>
           <view class='classic-img' style='background-color:#666666;'/> 
-          : 强制性工作时间 
+          : 工作
         </view>
         <view class="title classic-container">
           <radio value="radio4"/>
           <view class='classic-img' style='background-color:goldenrod;'/> 
-          : 浪费的时间 
+          : 浪费
         </view>
       </radio-group>
     </view>

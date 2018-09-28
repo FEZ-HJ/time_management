@@ -12,22 +12,22 @@ Page({
       canvasId: 'pieCanvas',
       type: 'pie',
       series: [{
-        name: '娱乐时间',
+        name: '娱乐',
         data: 50,
       }, {
-          name: '对自己有成长的时间',
+          name: '成长',
         data: 30,
       }, {
-          name: '吃饭、睡觉的时间',
+          name: '吃饭，睡觉',
         data: 16,
       }, {
-          name: '强制性工作时间',
+          name: '工作',
         data: 17,
       }, {
-          name: '浪费的时间',
+          name: '浪费',
         data: 46,
         }],
-      width: 320,
+      width: 300,
       height: 300,
       dataLabel: true
     });
