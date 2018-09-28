@@ -61,7 +61,7 @@
         </view>
         <view class="title classic-container">
           <radio value="radio3"/>
-          <view class='classic-img' style='background-color:greenyellow;'/> 
+          <view class='classic-img' style='background-color:#666666;'/> 
           : 强制性工作时间 
         </view>
         <view class="title classic-container">
