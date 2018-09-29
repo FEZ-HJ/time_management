@@ -1,11 +1,36 @@
-<view class="item-box">
-  <view class="items">
-    <view wx:for="{{list}}"  wx:key="{{index}}"  class="item">
-     
-      <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class="inner txt">
-      <!-- <image class="item-icon" mode="widthFix" src="{{item.icon}}"></image> -->
-      {{item.txt}}</view>
-      <view data-index="{{index}}" bindtap = "delItem" class="inner del">删除</view>
+<view class="container">
+
+  <view class='classic-container'>
+
+      <view class=" weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">开始</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="date" value="{{startTime}}" bindchange="bindstartTimeChange">
+              <view class="weui-input">{{startTime}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+
+      <view class=" weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">结束</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="date" value="{{endTime}}" bindchange="bindendTimeChange">
+              <view class="weui-input">{{endTime}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+
     </view>
+
+  <view class='canvas'>
+    <canvas canvas-id="pieCanvas" style="height:300px" ></canvas>
   </view>
 </view>

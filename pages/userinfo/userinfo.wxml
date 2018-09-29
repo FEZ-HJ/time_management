@@ -1,6 +1,20 @@
-<view class="address-list">
-  <view class='content' wx:for="{{info}}">
-      <text class='text'>{{item.startTime}}--{{item.endTime}} {{item.content}} </text>
+<view class="container">
+  <image src="/images/my/my@bg.png" class="bg"></image>
+  <v-imageButton wx:if="{{!hasUserInfo}}" open-type="getUserInfo" class="avatar-position" bind:getuserinfo="onGetUserInfo">
+     <image slot="img" class="avatar" src="/images/my/my.png" /> 
+  </v-imageButton>
+  <view class="avatar-container avatar-position">
+    <image src="{{userInfo.avatarUrl}}" wx:if="{{hasUserInfo}}" class="avatar" />
+    <open-data wx:if="{{hasUserInfo}}" type="userNickName"></open-data>
+  </view>
+  <view class="about-container">
+    <view bind:tap="onJumpToAbout" class="about-us">
+      <image src="/images/my/about.png" />
+      <text class="description">关于我们</text>
     </view>
+    <view class="about-us">
+      <text class="book-num">{{myBooksCount}}</text>
+      <text class="description">喜欢的书</text>
+    </view>
+  </view>
 </view>
-<!-- <button bindtap="add" type="primary" class="address-add">添加</button> -->

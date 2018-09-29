@@ -4,25 +4,20 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    list: Object
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-
+    delBtnWidth: 180,//删除按钮宽度单位（rpx）
+    index: '_listbox'
   },
-  detached: function (event) {
-    this.initEleWidth();
-    this.tempData();
-  },
-  onLoad: function (options) {
+  ready: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
     this.initEleWidth();
-    this.tempData();
   },
-
   /**
    * 组件的方法列表 
    */
@@ -114,71 +109,5 @@ Component({
         list: list
       });
     },
-    //测试临时数据
-    tempData: function () {
-      console.log(1)
-      var list = [
-        {
-          txtStyle: "",
-          icon: "/images/icon0.png",
-          txt: "向左滑动可以删除"
-        },
-        {
-          txtStyle: "",
-          icon: "/images/icon6.png",
-          txt: "微信小程序|联盟（wxapp-union.com）"
-        },
-        {
-          txtStyle: "",
-          icon: "/images/icon1.png",
-          txt: "圣诞老人是爸爸，顺着烟囱往下爬，礼物塞满圣诞袜，平安糖果一大把"
-        },
-        {
-          txtStyle: "",
-          icon: "/images/icon2.png",
-          txt: "圣诞到来，元旦还会远吗？在圣诞这个日子里"
-        },
-        {
-          txtStyle: "",
-          icon: "/images/icon3.png",
-          txt: "圣诞节(Christmas或Cristo Messa ),译名为“基督弥撒”。"
-        },
-        {
-          txtStyle: "",
-          icon: "/images/icon4.png",
-          txt: "一年一度的圣诞节即将到来,姑娘们也纷纷开始跑趴了吧!"
-        },
-        {
-          txtStyle: "",
-          icon: "/images/icon5.png",
-          txt: "圣诞节(Christmas或Cristo Messa ),译名为“基督弥撒”。"
-        },
-        {
-          txtStyle: "",
-          icon: "/images/icon2.png",
-          txt: "你的圣诞节礼物准备好了吗?"
-        },
-        {
-          txtStyle: "",
-          icon: "/images/icon3.png",
-          txt: "一年一度的圣诞节即将到来,姑娘们也纷纷开始跑趴了吧!"
-        },
-        {
-          txtStyle: "",
-          icon: "/images/icon4.png",
-          txt: "圣诞到来，元旦还会远吗？"
-        },
-        {
-          txtStyle: "",
-          icon: "/images/icon5.png",
-          txt: "记下这一刻的心情"
-        },
-
-      ];
-
-      this.setData({
-        list: list
-      });
-    }
   }
 })

@@ -7,121 +7,47 @@ Page({
    * 页面的初始数据
    */
   data: {
-    info: [
-      {
-        "startTime": '08:00',
-        "endTime": '10:10',
-        "content": '吃饭睡觉sssssssssssssssssssssssssssssssssssssssssssssssssssdddddddddddd'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      }
-      ,
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      },
-      {
-        "startTime": '10:10',
-        "endTime": '11:10',
-        "content": '打豆豆'
-      }
-    ]
+    hasUserInfo: true,
+    userInfo: null,
+    classics: [],
+    myBooksCount: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.hasGottenUserInfo()
   },
 
+  hasGottenUserInfo: function () {
+    wx.getSetting({
+      success: (data) => {
+        if (data.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: (data) => {
+              this.setData({
+                hasUserInfo: true,
+                userInfo: data.userInfo
+              })
+            }
+          })
+        } else {
+          this.setData({
+            hasUserInfo: false
+          })
+        }
+      }
+    })
+  },
+
+  onGetUserInfo: function (event) {
+    let userInfo = event.detail.userInfo
+    if (userInfo) {
+      this.setData({
+        hasUserInfo: true,
+        userInfo: userInfo
+      })
+    }
+  },
 })

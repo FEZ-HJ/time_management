@@ -1,8 +1,7 @@
 {
   "pages": [
-    "pages/create/create",
-    "pages/pie_chart/pie_chart",
     "pages/classic/classic",
+    "pages/create/create",
     "pages/analyze/analyze",
     "pages/userinfo/userinfo"
   ],

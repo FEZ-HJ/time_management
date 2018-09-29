@@ -43,8 +43,10 @@
 .img-container{
   left: 50%;
   margin-left: -40rpx; 
-  position: absolute;
+  /* position: absolute; */
   bottom: 140rpx;
+  margin-top: 100rpx;
+  margin-bottom: 50rpx;
 }
 
 .img-center{
