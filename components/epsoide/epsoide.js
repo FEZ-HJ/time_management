@@ -43,6 +43,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    add: function () {
+      wx.navigateTo({
+        url: '../create/create'
+      })
+    },
   }
 })

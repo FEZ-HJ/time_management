@@ -1,0 +1,11 @@
+<view wx:for="{{list}}"  wx:key="{{index}}"  class="item">
+  <view bindtouchstart="touchS" 
+        bindtouchmove="touchM" 
+        bindtouchend="touchE" 
+        data-index="{{index}}" 
+        style="{{item.txtStyle}}" 
+        class="inner txt">
+        {{item.txt}}
+  </view>
+  <view data-index="{{index}}" bindtap = "delItem" class="inner del">删除</view>
+</view>

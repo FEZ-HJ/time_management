@@ -9,4 +9,5 @@
     <text class='year'>{{year}}</text>
   </view>
     <text class='day'>{{day}}</text>
+    <image  class="img" src="images/add.png" bind:tap="add"></image>
 </view>

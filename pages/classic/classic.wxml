@@ -3,28 +3,19 @@
       <v-epsoide class='epsoide' index="{{index}}"/>
   </view>
 
-  <!-- <scroll-view scroll-y="true"  style="height: 800rpx;" >
-    <view class='content' wx:for="{{info}}">
-      <text class='text'>{{item.startTime}}--{{item.endTime}} {{item.content}} </text>
-    </view>
-  </scroll-view> -->
-
-  <view class='address-list'>
-    <view class="item-box">
-      <view class="items">
-        <view wx:for="{{list}}"  wx:key="{{index}}"  class="item">
-        
-          <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class="inner txt">
-          <!-- <image class="item-icon" mode="widthFix" src="{{item.icon}}"></image> -->
-          {{item.txt}}</view>
-          <view data-index="{{index}}" bindtap = "delItem" class="inner del">删除</view>
-        </view>
+   <view>
+    <!-- <view wx:for="{{list}}"  wx:key="{{index}}"  class="item">
+      <view bindtouchstart="touchS" 
+            bindtouchmove="touchM" 
+            bindtouchend="touchE" 
+            data-index="{{index}}" 
+            style="{{item.txtStyle}}" 
+            class="inner txt">
+            {{item.txt}}
       </view>
-    </view>
-  </view>
-
-  <view bind:tap="add" class='img-container'>
-    <image class='img' src="images/add.png"></image>
+      <view data-index="{{index}}" bindtap = "delItem" class="inner del">删除</view>
+    </view> -->
+    <v-listbox />
   </view>
 
 </view>

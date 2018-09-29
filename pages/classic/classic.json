@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "v-epsoide": "/components/epsoide/epsoide"
+    "v-epsoide": "/components/epsoide/epsoide",
+    "v-listbox": "/components/listbox/listbox"
   }
 }
