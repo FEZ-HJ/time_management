@@ -5,7 +5,7 @@
   </view>
 
   <view class='listbox'>
-    <v-listbox list="{{list}}"/>
+    <v-listbox list="{{list}}" bind:deleteItem="deleteItem" />
   </view>
 
 </view>

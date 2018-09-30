@@ -20,6 +20,10 @@ Page({
       url: '../create/create'
     })
   },
+
+  deleteItem: function(e){
+    console.log(e.detail.index)
+  },
   
   //测试临时数据
   tempData: function () {

@@ -108,6 +108,11 @@ Component({
       this.setData({
         list: list
       });
+
+      this.triggerEvent('deleteItem', {
+        index: index
+      }, {})
+
     },
   }
 })
