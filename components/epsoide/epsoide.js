@@ -1,4 +1,5 @@
-// components/epsoide/epsoide.js
+var util = require('../../utils/util.js')
+
 Component({
   /**
    * 组件的属性列表
@@ -36,7 +37,7 @@ Component({
     this.setData({
       year: year,
       month: this.data.months[month],
-      day: day
+      day: util.formatNumber(day)
     })
   },
   /**
