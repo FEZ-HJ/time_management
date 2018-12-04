@@ -64,6 +64,6 @@
 .img{
   width: 64rpx;
   height: 64rpx;
-  left: 95%;
+  left: 90%;
   position: relative;
 }
