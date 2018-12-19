@@ -12,7 +12,7 @@ Page({
           wx.getUserInfo({
             success: function (res) {
               //从数据库获取用户信息
-              that.queryUsreInfo();
+              // that.queryUsreInfo();
               //用户已经授权过
               // wx.switchTab({
               //   url: '/pages/classic/classic'
@@ -33,22 +33,23 @@ Page({
           var code = res.code;
           if(code){
             wx.request({
-              url: 'http://localhost/wxLogin',
+              url: 'http://localhost/wxLogin?code='+code,
               data:{
                 code: code
-              }
+              },
+              method: 'POST'
             })
           }
 
-          wx.getUserInfo({//getUserInfo流程
-            success: function (res2) {//获取userinfo成功
-              console.log(res2);
-              var encryptedData = encodeURIComponent(res2.encryptedData);//一定要把加密串转成URI编码
-              var iv = res2.iv;
-              //请求自己的服务器
-              // Login(code, encryptedData, iv);
-            }
-          })
+          // wx.getUserInfo({//getUserInfo流程
+          //   success: function (res2) {//获取userinfo成功
+          //     console.log(res2);
+          //     var encryptedData = encodeURIComponent(res2.encryptedData);//一定要把加密串转成URI编码
+          //     var iv = res2.iv;
+          //     //请求自己的服务器
+          //     // Login(code, encryptedData, iv);
+          //   }
+          // })
         }
       });
       
