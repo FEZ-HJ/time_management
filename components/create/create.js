@@ -42,6 +42,22 @@ Component({
         return
       }
       // TODO 提交数据到服务器
+      wx.request({
+        url: 'http://localhost/timeContent/save?content=' + this.data.text_value + '&startTime=' + this.data.startTime,
+        // method: 'POST',
+        header: { "wxchat": wx.getStorageSync('encryption')},
+        data: {
+          endTime: this.data.endTime,
+          type: this.data.radio_value
+        },
+        success: function (data) {
+          // //授权成功后，跳转进入小程序首页
+          wx.switchTab({
+            url: '/pages/classic/classic'
+          })
+        }
+      })
+
       
       wx.navigateBack ({
         url: '/pages/classic/classic'

@@ -4,24 +4,12 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onLoad: function () {
-    var that = this;
-    // 查看是否授权
-    wx.getSetting({
-      success: function (res) {
-        if (res.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
-            success: function (res) {
-              //从数据库获取用户信息
-              // that.queryUsreInfo();
-              //用户已经授权过
-              // wx.switchTab({
-              //   url: '/pages/classic/classic'
-              // })
-            }
-          });
-        }
-      }
-    })
+    if (wx.getStorageSync('encryption') != null && wx.getStorageSync('encryption') != ''){
+      wx.switchTab({
+        url: '/pages/classic/classic'
+      })
+    }
+
   },
   bindGetUserInfo: function (e) {
     if (e.detail.userInfo) {
@@ -33,30 +21,24 @@ Page({
           var code = res.code;
           if(code){
             wx.request({
-              url: 'http://localhost/wxLogin?code='+code,
+              url: 'http://localhost/wxLogin?code='+code+'&nickName='+e.detail.userInfo.nickName,
+              method: 'POST',
               data:{
-                code: code
+                code: code,
+                nickName: e.detail.userInfo.nickName
               },
-              method: 'POST'
+              success: function(data){
+                wx.setStorageSync("encryption", data.data);
+                // //授权成功后，跳转进入小程序首页
+                wx.switchTab({
+                  url: '/pages/classic/classic'
+                })
+              }
             })
-          }
-
-          // wx.getUserInfo({//getUserInfo流程
-          //   success: function (res2) {//获取userinfo成功
-          //     console.log(res2);
-          //     var encryptedData = encodeURIComponent(res2.encryptedData);//一定要把加密串转成URI编码
-          //     var iv = res2.iv;
-          //     //请求自己的服务器
-          //     // Login(code, encryptedData, iv);
-          //   }
-          // })
+          } 
         }
       });
       
-      // //授权成功后，跳转进入小程序首页
-      // wx.switchTab({
-      //   url: '/pages/classic/classic'
-      // })
     } else {
       //用户按了拒绝按钮
       wx.showModal({
@@ -71,22 +53,5 @@ Page({
         }
       })
     }
-  },
-  //获取用户信息接口
-  queryUsreInfo: function () {
-    wx.request({
-      url: getApp().globalData.urlPath + 'hstc_interface/queryByOpenid',
-      data: {
-        openid: getApp().globalData.openid
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res.data);
-        getApp().globalData.userInfo = res.data;
-      }
-    })
-  },
-
+  }
 })
