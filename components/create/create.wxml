@@ -9,8 +9,8 @@
           <view class="weui-label">开始</view>
         </view>
         <view class="weui-cell__bd">
-          <picker mode="time" value="{{startTime}}" bindchange="bindstartTimeChange">
-            <view class="weui-input">{{startTime}}</view>
+          <picker mode="time" value="{{maxStartTime}}" start="{{startTime}}" end="{{maxEndTime}}" bindchange="bindstartTimeChange">
+            <view class="weui-input">{{maxStartTime}}</view>
           </picker>
         </view>
       </view>
@@ -22,8 +22,8 @@
           <view class="weui-label">结束</view>
         </view>
         <view class="weui-cell__bd">
-          <picker mode="time" value="{{endTime}}" bindchange="bindendTimeChange">
-            <view class="weui-input">{{endTime}}</view>
+          <picker mode="time" value="{{maxEndTime}}" start="{{maxStartTime}}" end="{{endTime}}" bindchange="bindendTimeChange">
+            <view class="weui-input">{{maxEndTime}}</view>
           </picker>
         </view>
       </view>
@@ -45,27 +45,27 @@
     <view class="show-title">
       <radio-group name="radio" bindchange="radioChange">
         <view class="title classic-container">
-          <radio value="radio0"/>
+          <radio value="0"/>
           <view class='classic-img' style='background-color:red;'/> 
           : 娱乐 
         </view>
         <view class="title classic-container">
-          <radio value="radio1"/>
+          <radio value="1"/>
           <view class='classic-img' style='background-color:skyblue;'/> 
           : 成长 
         </view>
         <view class="title classic-container">
-          <radio value="radio2"/>
+          <radio value="2"/>
           <view class='classic-img' style='background-color:lime;'/> 
           : 吃饭、睡觉 
         </view>
         <view class="title classic-container">
-          <radio value="radio3"/>
+          <radio value="3"/>
           <view class='classic-img' style='background-color:#666666;'/> 
           : 工作
         </view>
         <view class="title classic-container">
-          <radio value="radio4"/>
+          <radio value="4"/>
           <view class='classic-img' style='background-color:goldenrod;'/> 
           : 浪费
         </view>

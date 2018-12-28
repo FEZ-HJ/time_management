@@ -101,6 +101,9 @@ Component({
     delItem: function (e) {
       //获取列表中要删除项的下标
       var index = e.target.dataset.index;
+
+      var content = this.data.list[index]
+
       var list = this.data.list;
       //移除列表中下标为index的项
       list.splice(index, 1);
@@ -110,7 +113,7 @@ Component({
       });
 
       this.triggerEvent('deleteItem', {
-        index: index
+        content: content
       }, {})
 
     },

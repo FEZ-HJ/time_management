@@ -1,4 +1,7 @@
 // pages/classic/classic.js
+var util = require('../../utils/util.js')
+var showToast = require('../../utils/showToast.js')
+
 Page({
 
   /**
@@ -13,6 +16,7 @@ Page({
    */
   onLoad: function (options) {
     this.tempData()
+    this.recordTimes()
   },
 
   add: function(){
@@ -22,72 +26,65 @@ Page({
   },
 
   deleteItem: function(e){
-    console.log(e.detail.index)
+    console.log(e.detail.content)
+    wx.request({
+      url: 'http://localhost/timeContent/deleteById?id='+e.detail.content.id,
+      method: 'delete',
+      header: { "wxchat": wx.getStorageSync('encryption') },
+      success: function (data) {
+        console.log(data)
+        if (data.data.status = '200') {
+          showToast.show_toast(data.data.message)
+        }
+      }
+    })
   },
   
   //测试临时数据
   tempData: function () {
-    var list = [
-      {
-        txtStyle: "",
-        icon: "/images/icon0.png",
-        txt: "向左滑动可以删除"
+    var that = this
+    wx.request({
+      url: 'http://localhost/timeContent/findOnDay',
+      // method: 'POST',
+      header: { "wxchat": wx.getStorageSync('encryption') },
+      data:{
+        createTime: util.formatDay(new Date())
       },
-      {
-        txtStyle: "",
-        icon: "/images/icon6.png",
-        txt: "微信小程序|联盟（wxapp-union.com）"
-      },
-      {
-        txtStyle: "",
-        icon: "/images/icon1.png",
-        txt: "圣诞老人是爸爸，顺着烟囱往下爬，礼物塞满圣诞袜，平安糖果一大把"
-      },
-      {
-        txtStyle: "",
-        icon: "/images/icon2.png",
-        txt: "圣诞到来，元旦还会远吗？在圣诞这个日子里"
-      },
-      {
-        txtStyle: "",
-        icon: "/images/icon3.png",
-        txt: "圣诞节(Christmas或Cristo Messa ),译名为“基督弥撒”。"
-      },
-      {
-        txtStyle: "",
-        icon: "/images/icon4.png",
-        txt: "一年一度的圣诞节即将到来,姑娘们也纷纷开始跑趴了吧!"
-      },
-      {
-        txtStyle: "",
-        icon: "/images/icon5.png",
-        txt: "圣诞节(Christmas或Cristo Messa ),译名为“基督弥撒”。"
-      },
-      {
-        txtStyle: "",
-        icon: "/images/icon2.png",
-        txt: "你的圣诞节礼物准备好了吗?"
-      },
-      {
-        txtStyle: "",
-        icon: "/images/icon3.png",
-        txt: "一年一度的圣诞节即将到来,姑娘们也纷纷开始跑趴了吧!"
-      },
-      {
-        txtStyle: "",
-        icon: "/images/icon4.png",
-        txt: "圣诞到来，元旦还会远吗？"
-      },
-      {
-        txtStyle: "",
-        icon: "/images/icon5.png",
-        txt: "记下这一刻的心情"
-      },
+      success: function (data) {
+        console.log(data)
+        if (data.data.status = '200') {
+          that.setData({
+            list: data.data.content            
+          })
+        }
+      }
+    })
 
-    ];
+    // var list = [
+    //   {
+    //     create: 'sss',
+    //     // txtStyle: "red",
+    //     // icon: "/images/icon0.png",
+    //     txt: "123456789123456789123456789123456789123456789123456789"
+    //   }
+    // ];
 
-    this.setData({
-      list: list
-    });
+  },
+
+  recordTimes : function(){
+    var that = this
+    wx.request({
+      url: 'http://localhost/timeContent/findCountByUserId',
+      // method: 'POST',
+      header: { "wxchat": wx.getStorageSync('encryption') },
+      success: function (data) {
+        console.log(data)
+        if (data.data.status = '200') {
+          that.setData({
+            index: data.data.content
+          })
+        }
+      }
+    })
   }
 })

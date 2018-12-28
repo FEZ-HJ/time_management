@@ -26,27 +26,47 @@ Page({
       startTime: year + '-' + util.formatNumber(month) + '-01',
       endTime: year + '-' + util.formatNumber(month) + '-' + util.formatNumber(day),
     })
+
+var that = this
+    wx.request({
+      url: 'http://localhost/timeContent/findByDays',
+      // method: 'delete',
+      header: { "wxchat": wx.getStorageSync('encryption') },
+      data:{
+        startTime: that.data.startTime,
+        endTime: that.data.endTime,
+      },
+      success: function (data) {
+        console.log(data)
+        if (data.data.status = '200') {
+          that.setData({
+            series: data.data.content
+          })
+          that._drawPie()
+        }
+      }
+    })
   },
   onReady: function (e) {
-    this.setData({
-      series: [{
-        name: '娱乐',
-        data: 50,
-      }, {
-        name: '成长',
-        data: 30,
-      }, {
-        name: '吃饭，睡觉',
-        data: 16,
-      }, {
-        name: '工作',
-        data: 17,
-      }, {
-        name: '浪费',
-        data: 46,
-      }]
-    })
-    this._drawPie()
+    // this.setData({
+    //   series: [{
+    //     name: '娱乐',
+    //     data: 50,
+    //   }, {
+    //     name: '成长',
+    //     data: 30,
+    //   }, {
+    //     name: '吃饭，睡觉',
+    //     data: 16,
+    //   }, {
+    //     name: '工作',
+    //     data: 17,
+    //   }, {
+    //     name: '浪费',
+    //     data: 46,
+    //   }]
+    // })
+    // this._drawPie()
   },
   _drawPie: function(){
     new wxCharts({

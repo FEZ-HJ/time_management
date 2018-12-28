@@ -1,13 +1,31 @@
 // components/pickers/pickers.js
 var showToast = require('../../utils/showToast.js')
+var util = require('../../utils/util.js')
+
 
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    startTime:String,
-    endTime:String
+    startTime:{
+      type : String,
+      observer: function (newVal, oldVal, changedPath){
+        this.setData({
+          maxStartTime: newVal
+        })
+        console.log(this.data.maxStartTime)
+      }
+    },
+    endTime: {
+      type: String,
+      observer: function (newVal, oldVal, changedPath) {
+        this.setData({
+          maxEndTime: newVal
+        })
+        console.log(this.data.maxEndTime)
+      }
+    },
   },
 
   /**
@@ -15,7 +33,9 @@ Component({
    */
   data: {
     text_value: '',
-    radio_value: ''
+    radio_value: '',
+    minStartTime: '',
+    maxEndTime: '',
   },
 
   /**
@@ -24,12 +44,12 @@ Component({
   methods: {
     bindstartTimeChange: function (e) {
       this.setData({
-        startTime: e.detail.value
+        maxStartTime: e.detail.value
       })
     },
     bindendTimeChange: function (e) {
       this.setData({
-        endTime: e.detail.value
+        maxEndTime: e.detail.value
       })
     },
     submit: function(){
@@ -42,26 +62,32 @@ Component({
         return
       }
       // TODO 提交数据到服务器
+      var nowDay = util.formatDay(new Date()) + ' ';
       wx.request({
-        url: 'http://localhost/timeContent/save?content=' + this.data.text_value + '&startTime=' + this.data.startTime,
+        url: 'http://localhost/timeContent/save',
         // method: 'POST',
         header: { "wxchat": wx.getStorageSync('encryption')},
         data: {
-          endTime: this.data.endTime,
+          content: this.data.text_value,
+          startTime: nowDay + this.data.maxStartTime + ':00', 
+          endTime: nowDay + this.data.maxEndTime + ':00',
           type: this.data.radio_value
         },
         success: function (data) {
-          // //授权成功后，跳转进入小程序首页
-          wx.switchTab({
-            url: '/pages/classic/classic'
-          })
+          console.log(data)
+          if(data.data.status = '200'){
+            showToast.show_toast(data.data.message)
+            wx.switchTab({
+              url: '/pages/classic/classic'
+            })
+          }
         }
       })
 
       
-      wx.navigateBack ({
-        url: '/pages/classic/classic'
-      })
+      // wx.navigateBack ({
+      //   url: '/pages/classic/classic'
+      // })
     },
     text_input: function(e){
       this.setData({
